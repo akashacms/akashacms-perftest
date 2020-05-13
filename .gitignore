@@ -1,3 +1,7 @@
+out
+package-lock.json
+build.txt
+
 # Logs
 logs
 *.log

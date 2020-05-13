@@ -1,0 +1,47 @@
+{
+  "author": {
+    "name": "David Herron",
+    "email": "david@davidherron.com",
+    "url": "http://davidherron.com"
+  },
+  "name": "akashacms-perftest",
+  "description": "AkashaCMS Performance Test website",
+  "version": "0.7.6",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/akashacms/akashacms-perftest.git"
+  },
+  "scripts": {
+    "prebuild": "akasharender copy-assets config.js",
+    "build": "akasharender render config.js",
+    "preview": "cd out && ws --log.format dev",
+    "pretest": "npm run build",
+    "test": "cd test && mocha ./index"
+  },
+  "dependencies": {
+    "@akashacms/plugins-authors": "github:akashacms/akashacms-plugin-authors",
+    "@akashacms/plugins-base": "github:akashacms/akashacms-base",
+    "@akashacms/plugins-booknav": "github:akashacms/akashacms-booknav",
+    "@akashacms/plugins-breadcrumbs": "github:akashacms/akashacms-breadcrumbs",
+    "@akashacms/plugins-document-viewers": "github:akashacms/akashacms-document-viewers",
+    "@akashacms/plugins-embeddables": "github:akashacms/akashacms-embeddables",
+    "@akashacms/plugins-footnotes": "github:akashacms/akashacms-footnotes",
+    "@akashacms/plugins-tagged-content": "github:akashacms/akashacms-tagged-content",
+    "@akashacms/theme-bootstrap": "akashacms/akashacms-theme-bootstrap",
+    "akashacms-affiliates": "github:akashacms/akashacms-affiliates",
+    "akashacms-dlassets": "github:akashacms/akashacms-dlassets",
+    "akashacms-external-links": "github:akashacms/akashacms-external-links",
+    "akasharender": "github:akashacms/akasharender",
+    "bootstrap": "^4.3.x",
+    "chai": "^4.1.2",
+    "fs-extra": "^5.x",
+    "globfs": ">=0.3",
+    "jquery": "^3.3.x",
+    "local-web-server": "^3.0.7",
+    "lorem-ipsum": "^2.0.3",
+    "mahabhuta": "github:akashacms/mahabhuta",
+    "mocha": "^5.2.0",
+    "oembetter": "^0.1.19",
+    "popper.js": ">=1.14.x"
+  }
+}
