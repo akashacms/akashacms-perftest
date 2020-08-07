@@ -16,6 +16,8 @@
     "build": "akasharender render config.js",
     "prebuild-liquid": "akasharender copy-assets config-liquid.js",
     "build-liquid": "akasharender render config-liquid.js",
+    "prebuild-nunjucks": "akasharender copy-assets config-nunjucks.js",
+    "build-nunjucks": "akasharender render config-nunjucks.js",
     "preview": "cd out && ws --log.format dev",
     "pretest": "npm run build",
     "test": "cd test && mocha ./index"
@@ -34,16 +36,16 @@
     "akashacms-dlassets": "github:akashacms/akashacms-dlassets",
     "akashacms-external-links": "github:akashacms/akashacms-external-links",
     "akasharender": "github:akashacms/akasharender",
-    "bootstrap": "^4.3.x",
+    "bootstrap": "^4.5.x",
     "chai": "^4.1.2",
     "fs-extra": "^5.x",
     "globfs": ">=0.3",
-    "jquery": "^3.3.x",
+    "jquery": "^3.5.x",
     "local-web-server": "^3.0.7",
     "lorem-ipsum": "^2.0.3",
     "mahabhuta": "github:akashacms/mahabhuta",
     "mocha": "^5.2.0",
     "oembetter": "^0.1.19",
-    "popper.js": ">=1.14.x"
+    "popper.js": ">=1.16.x"
   }
 }
