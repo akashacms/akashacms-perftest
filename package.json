@@ -14,6 +14,8 @@
   "scripts": {
     "prebuild": "akasharender copy-assets config.js",
     "build": "akasharender render config.js",
+    "prebuild-liquid": "akasharender copy-assets config-liquid.js",
+    "build-liquid": "akasharender render config-liquid.js",
     "preview": "cd out && ws --log.format dev",
     "pretest": "npm run build",
     "test": "cd test && mocha ./index"
