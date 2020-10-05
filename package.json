@@ -18,6 +18,8 @@
     "build-liquid": "akasharender render config-liquid.js",
     "prebuild-nunjucks": "akasharender copy-assets config-nunjucks.js",
     "build-nunjucks": "akasharender render config-nunjucks.js",
+    "prebuild-handlebars": "akasharender copy-assets config-handlebars.js",
+    "build-handlebars": "akasharender render config-handlebars.js",
     "preview": "cd out && ws --log.format dev",
     "pretest": "npm run build",
     "test": "cd test && mocha ./index"
