@@ -46,6 +46,7 @@
     "local-web-server": "^3.0.7",
     "lorem-ipsum": "^2.0.3",
     "mahabhuta": "github:akashacms/mahabhuta",
+    "mitata": "^0.1.6",
     "mocha": "^5.2.0",
     "oembetter": "^0.1.19",
     "popper.js": ">=1.16.x"
