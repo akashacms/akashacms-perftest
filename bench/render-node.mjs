@@ -120,6 +120,32 @@ bench('markdown-render',  () => {
     // console.log(output);
 });
 
+// CHEERIO
+
+const html1 = md.render(doc1);
+
+import * as cheerio from 'cheerio';
+
+bench('cheerio', () => {
+    const $ = cheerio.load(html1, {
+        recognizeSelfClosing: true,
+        recognizeCDATA: true,
+        decodeEntities: true,
+        _useHtmlParser2: true
+    });
+
+    $('a').each(function(i, elem) {
+        $(elem).attr('rel', 'nofollow');
+    });
+    $('li').addClass('index-item');
+    const html = $.html();
+    // console.log(html);
+});
+
+/**
+ * Next, should be able to directly call AkashaCMS functions to render individual files
+ */
+
 
 try {
     await run({

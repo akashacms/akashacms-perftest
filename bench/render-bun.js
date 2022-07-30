@@ -1,8 +1,6 @@
 
 import { bench, run } from "mitata";
 
-// import * as ejs from 'ejs';
-
 let people = ['geddy', 'neil', 'alex'];
 
 // TEMPLATE STRINGS
@@ -11,7 +9,9 @@ bench('literal', () => { return `${people.join(', ')}`; });
 
 // EJS
 
-/* bench('ejs-join', () => {
+/* import * as ejs from 'ejs';
+
+bench('ejs-join', () => {
     ejs.render('<%= people.join(", "); %>', { people: people });
 });
 bench('ejs-list', () => {
@@ -35,7 +35,7 @@ Handlebars.registerHelper("join", function(options) {
 const templateJoin = Handlebars.compile(`
 {{#join}}{{/join}}
 `);
-bench('handlers-join-once', () => {
+bench('handlebars-join-once', () => {
     const output = templateJoin();
     // console.log(output);
 });
@@ -76,9 +76,10 @@ bench(`liquid-list`, async () => {
 
 // NUNJUCKS
 
-// import nunjucks from 'nunjucks';
+/* 
 
-/*
+import nunjucks from 'nunjucks';
+
 bench('nunjucks-join',  () => {
     const output = nunjucks.renderString('{{ people | join(", ") }}', { people: people });
     // console.log(output);
@@ -95,7 +96,7 @@ bench(`nunjucks-list`, () => {
     `, { people: people });
     // console.log(output);
 });
-*/
+/* */
 
 
 // MARKDOWN
@@ -113,7 +114,7 @@ const mditConfig = {
   
     // Highlighter function. Should return escaped html,
     // or '' if input not changed
-    highlight: function (/*str, , lang* /) { return ''; }
+    highlight: function () { return ''; }
 };
 const md = MarkdownIt(mditConfig);
 const doc1 = await fsp.readFile('fixtures/document.md', 'utf-8');
@@ -121,7 +122,42 @@ const doc1 = await fsp.readFile('fixtures/document.md', 'utf-8');
 bench('markdown-render',  () => {
     const output = md.render(doc1);
     // console.log(output);
-}); */
+}); /* */
+
+
+// CHEERIO
+
+// We should derive this using md.render but that doesn't work currently
+
+const html1 = // md.render(doc1);
+`
+<h1>Title 1</h1>
+<p>Some text <a href="http://somewhere.com">with a link</a></p>
+<h2>Title 2</h2>
+<ul>
+<li>Person 1</li>
+<li>Person 2</li>
+<li>Person 3</li>
+</ul>
+`;
+
+import * as cheerio from 'cheerio';
+
+bench('cheerio', () => {
+    const $ = cheerio.load(html1, {
+        recognizeSelfClosing: true,
+        recognizeCDATA: true,
+        decodeEntities: true,
+        _useHtmlParser2: true
+    });
+
+    $('a').each(function(i, elem) {
+        $(elem).attr('rel', 'nofollow');
+    });
+    $('li').addClass('index-item');
+    const html = $.html();
+    // console.log(html);
+});
 
 
 try {

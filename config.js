@@ -64,12 +64,12 @@ config
             }
         ]
     })
-    .use(require('akashacms-dlassets'))
+    .use(require('@akashacms/plugins-dlassets'))
     .use(require('@akashacms/plugins-document-viewers'))
     .use(require('@akashacms/plugins-embeddables'))
-    .use(require('akashacms-external-links'))
+    .use(require('@akashacms/plugins-external-links'))
     .use(require('@akashacms/plugins-footnotes'))
-    .use(require('akashacms-affiliates'))
+    .use(require('@akashacms/plugins-affiliates'))
     .use(require('@akashacms/plugins-tagged-content'), {
         sortBy: 'title',
         // @tagDescription@ can only appear once
@@ -78,12 +78,12 @@ config
         pathIndexes: '/tags/'
     });
 
-config.plugin("akashacms-affiliates")
+config.plugin("@akashacms/plugins-affiliates")
     .amazonAffiliateCode(config, 'com', 'thereikipage')
     .noSkimlinksDomain(config, 'amazon.com')
     .noViglinksDomain(config, 'amazon.com');
 
-config.plugin("akashacms-external-links")
+config.plugin("@akashacms/plugins-external-links")
     .setTargetBlank(config, true)
     .setShowFavicons(config, "before")
     .setShowIcon(config, "after")

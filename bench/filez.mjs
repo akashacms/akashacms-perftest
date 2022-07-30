@@ -1,11 +1,17 @@
 
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
-const config = require('../config.js');
+const config = require('./config');
+
+// import * as config from './config.js';
+
+import { inspect } from 'util';
 
 import { default as chokidar } from 'chokidar';
 import { DirsWatcher } from '@akashacms/stacked-dirs';
 import { bench, run } from "mitata";
+
+console.log(inspect(config));
 
 const dirz = config.assetDirs
         .concat(config.documentDirs)
