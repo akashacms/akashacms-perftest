@@ -37,7 +37,7 @@
     "@akashacms/plugins-affiliates": "github:akashacms/akashacms-affiliates",
     "@akashacms/plugins-dlassets": "github:akashacms/akashacms-dlassets",
     "@akashacms/plugins-external-links": "github:akashacms/akashacms-external-links",
-    "akasharender": "github:akashacms/akasharender",
+    "akasharender": "file:../akasharender",
     "chokidar": "3.5.3",
     "bootstrap": "^4.5.x",
     "chai": "^4.1.2",
