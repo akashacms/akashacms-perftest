@@ -1,4 +1,24 @@
 
+/*
+$ node db-forerunner.mjs 
+cpu: Intel(R) Core(TM) i7-5600U CPU @ 2.60GHz
+runtime: node v18.6.0 (x64-linux)
+
+benchmark                                 time (avg)             (min … max)
+----------------------------------------------------------------------------
+paths                                  78.92 ms/iter   (72.75 ms … 97.98 ms)
+random find                              1.4 ms/iter   (977.58 µs … 7.75 ms)
+random siblings                         1.34 ms/iter   (687.23 µs … 5.44 ms)
+random indexes                          1.65 ms/iter      (1.2 ms … 5.23 ms)
+search layouts using find w/ orderBy    77.5 ms/iter    (75.14 ms … 88.9 ms)
+search layouts using find              72.58 ms/iter   (71.24 ms … 76.96 ms)
+*/
+
+/*
+ * OBSERVATIONS - This is faster than using the FileCache functions,
+ *   but is still relatively slow.
+ */
+
 import { promises as fsp } from 'fs';
 import YAML from 'yaml';
 import * as path from 'path';
