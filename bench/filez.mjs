@@ -1,9 +1,9 @@
 
-import { createRequire } from 'module';
+/* import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
-const config = require('./config');
+const config = require('./config.js'); */
 
-// import * as config from './config.js';
+import { config } from './config.mjs';
 
 import { inspect } from 'util';
 

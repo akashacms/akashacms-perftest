@@ -9,7 +9,8 @@ bench('literal', () => { return `${people.join(', ')}`; });
 
 // EJS
 
-/* import * as ejs from 'ejs';
+/* */
+import * as ejs from 'ejs';
 
 bench('ejs-join', () => {
     ejs.render('<%= people.join(", "); %>', { people: people });
@@ -22,7 +23,8 @@ bench('ejs-list', () => {
     }) %>
     </ul>
 `, { people: people });
-}); */
+});
+/* */
 
 // HANDLEBARS
 
@@ -76,7 +78,7 @@ bench(`liquid-list`, async () => {
 
 // NUNJUCKS
 
-/* 
+/* */
 
 import nunjucks from 'nunjucks';
 
@@ -101,7 +103,8 @@ bench(`nunjucks-list`, () => {
 
 // MARKDOWN
 
-/* import { promises as fsp } from 'fs';
+/* */
+import { promises as fsp } from 'fs';
 import MarkdownIt from 'markdown-it';
 
 const mditConfig = {

@@ -4,7 +4,7 @@
   "description": "",
   "main": "render-bun.js",
   "scripts": {
-    "bench": "npm-run-all render:node render:bun filez:node filez:bun",
+    "bench": "npm-run-all render:node render:bun filez:node",
     "render:node": "node render-node.mjs",
     "render:bun": "bun render-bun.js",
     "filez:node": "node filez.mjs",
