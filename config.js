@@ -66,7 +66,7 @@ config
     })
     .use(require('@akashacms/plugins-dlassets'))
     .use(require('@akashacms/plugins-document-viewers'))
-    .use(require('@akashacms/plugins-embeddables'))
+//    .use(require('@akashacms/plugins-embeddables'))
     .use(require('@akashacms/plugins-external-links'))
     .use(require('@akashacms/plugins-footnotes'))
     .use(require('@akashacms/plugins-affiliates'))

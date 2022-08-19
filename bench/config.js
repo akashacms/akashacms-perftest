@@ -161,6 +161,6 @@ config.addMahabhuta(
 
 config.prepare();
 
-console.log('Prepared config');
+console.log(`Prepared config -- ${typeof config} ${typeof config.akasha}`);
 
 module.exports = config;

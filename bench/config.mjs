@@ -1,12 +1,15 @@
 console.log('Config start');
 
-// import { createRequire } from 'module';
-// const require = createRequire(import.meta.url);
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 
 import * as akasha from 'akasharender';
 import * as path from 'path';
 import * as util from 'util';
 
+import { fileURLToPath } from 'node:url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname  = path.dirname(__filename);
 
 const mahabhuta = akasha.mahabhuta;
 

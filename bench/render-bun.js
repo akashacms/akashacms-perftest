@@ -1,29 +1,54 @@
 
 import { bench, run } from "mitata";
+import { promises as fsp } from 'fs';
 
 let people = ['geddy', 'neil', 'alex'];
 
 // TEMPLATE STRINGS
 
 bench('literal', () => { return `${people.join(', ')}`; });
+bench('literal list', () => {
+    const ret = `
+    <ul>
+    ${people.map(person => {
+        return `<li>${person}</li>`
+    })}
+    </ul>
+`;
+    // console.log(ret);
+    return ret;
+});
 
 // EJS
 
 /* */
+
 import * as ejs from 'ejs';
+
+const ejsContent = await fsp.readFile('./fixtures/ejs-content.ejs', 'utf-8');
 
 bench('ejs-join', () => {
     ejs.render('<%= people.join(", "); %>', { people: people });
 });
 bench('ejs-list', () => {
-    ejs.render(`
-    <ul>
-    <% people.forEach(function (person) {
-        %><li><%= person %></li><%
-    }) %>
-    </ul>
-`, { people: people });
+    ejs.render(ejsContent, { people: people });
 });
+
+const ejsPage = await fsp.readFile('./fixtures/ejs-page.ejs', 'utf-8');
+const ejsFooter = await fsp.readFile('./fixtures/ejs-footer.ejs', 'utf-8');
+
+bench('ejs-page', () => {
+    const content = ejs.render(ejsContent, { people: people });
+    const footer = ejs.render(ejsFooter, {
+        branding: 'Formatted with <a href="https://example.com">ExampleCMS</a>'
+    });
+    ejs.render(ejsPage, {
+        title: 'Test page for performance benchmarks',
+        content: content,
+        footer: footer
+    });
+});
+
 /* */
 
 // HANDLEBARS
@@ -104,7 +129,6 @@ bench(`nunjucks-list`, () => {
 // MARKDOWN
 
 /* */
-import { promises as fsp } from 'fs';
 import MarkdownIt from 'markdown-it';
 
 const mditConfig = {

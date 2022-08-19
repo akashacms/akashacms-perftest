@@ -1,0 +1,5 @@
+<ul id="products">
+{% for person in people %}
+    <li>{{ person | escape }}</li>
+{% endfor %}
+</ul>
